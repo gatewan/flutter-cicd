@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -10,6 +11,7 @@ import 'package:lib_core/presentation/provider/movie_list_notifier.dart';
 import 'package:lib_core/presentation/provider/tv_list_notifier.dart';
 import 'package:lib_core/utils/routes.dart';
 import 'package:provider/provider.dart';
+
 
 class HomeMoviePage extends StatefulWidget {
   @override
@@ -89,6 +91,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
         actions: [
           IconButton(
             onPressed: () {
+              FirebaseCrashlytics.instance.crash();
               Navigator.pushNamed(context, routeSearchMovie, arguments: _isMovie);
             },
             icon: Icon(Icons.search),

@@ -1,4 +1,5 @@
 import 'package:ditonton/injection.dart' as di;
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lib_core/lib_core.dart';
@@ -23,7 +24,9 @@ import 'package:lib_core/utils/routes.dart';
 import 'package:m_about/m_about.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   di.init();
   runApp(MyApp());
 }
