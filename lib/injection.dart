@@ -1,5 +1,6 @@
+import 'dart:io';
+
 import 'package:get_it/get_it.dart';
-import 'package:http/http.dart' as http;
 import 'package:lib_core/data/repositories/movie_repository_impl.dart';
 import 'package:lib_core/data/repositories/tv_repository_impl.dart';
 import 'package:lib_core/data/sources/local/db/database_helper.dart';
@@ -146,15 +147,15 @@ void init() {
   );
 
   // data sources
-  locator.registerLazySingleton<MovieRemoteDataSource>(() => MovieRemoteDataSourceImpl(client: locator()));
+  locator.registerLazySingleton<MovieRemoteDataSource>(() => MovieRemoteDataSourceImpl(sslClient: locator()));
   locator.registerLazySingleton<MovieLocalDataSource>(() => MovieLocalDataSourceImpl(databaseHelper: locator()));
 
-  locator.registerLazySingleton<TvRemoteDataSource>(() => TvRemoteDataSourceImpl(client: locator()));
+  locator.registerLazySingleton<TvRemoteDataSource>(() => TvRemoteDataSourceImpl(sslClient: locator()));
   locator.registerLazySingleton<TvLocalDataSource>(() => TvLocalDataSourceImpl(databaseHelper: locator()));
 
   // helper
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
 
   // external
-  locator.registerLazySingleton(() => http.Client());
+  locator.registerLazySingleton(() => HttpClient());
 }

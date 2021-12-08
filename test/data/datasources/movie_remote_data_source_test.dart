@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/io_client.dart';
 import 'package:lib_core/data/models/movie_detail_model.dart';
 import 'package:lib_core/data/models/movie_response.dart';
 import 'package:lib_core/data/sources/remote/movie_remote_data_source.dart';
@@ -20,7 +22,7 @@ void main() {
 
   setUp(() {
     mockHttpClient = MockHttpClient();
-    dataSource = MovieRemoteDataSourceImpl(client: mockHttpClient);
+    dataSource = MovieRemoteDataSourceImpl(sslClient: mockHttpClient);
   });
 
   group('get Now Playing Movies', () {
@@ -28,7 +30,9 @@ void main() {
 
     test('should return list of Movie Model when the response code is 200', () async {
       // arrange
-      when(mockHttpClient.get(Uri.parse('$BASE_URL/movie/now_playing?$API_KEY')))
+      mockHttpClient.badCertificateCallback = (X509Certificate cert, String host, int port) => false;
+      IOClient client = IOClient(mockHttpClient);
+      when(client.get(Uri.parse('$BASE_URL/movie/now_playing?$API_KEY')))
           .thenAnswer((_) async => http.Response(readJson('dummy_data/now_playing.json'), 200));
       // act
       final result = await dataSource.getNowPlayingMovies();
@@ -38,7 +42,9 @@ void main() {
 
     test('should throw a ServerException when the response code is 404 or other', () async {
       // arrange
-      when(mockHttpClient.get(Uri.parse('$BASE_URL/movie/now_playing?$API_KEY')))
+      mockHttpClient.badCertificateCallback = (X509Certificate cert, String host, int port) => false;
+      IOClient client = IOClient(mockHttpClient);
+      when(client.get(Uri.parse('$BASE_URL/movie/now_playing?$API_KEY')))
           .thenAnswer((_) async => http.Response('Not Found', 404));
       // act
       final call = dataSource.getNowPlayingMovies();
@@ -52,7 +58,9 @@ void main() {
 
     test('should return list of movies when response is success (200)', () async {
       // arrange
-      when(mockHttpClient.get(Uri.parse('$BASE_URL/movie/popular?$API_KEY')))
+      mockHttpClient.badCertificateCallback = (X509Certificate cert, String host, int port) => false;
+      IOClient client = IOClient(mockHttpClient);
+      when(client.get(Uri.parse('$BASE_URL/movie/popular?$API_KEY')))
           .thenAnswer((_) async => http.Response(readJson('dummy_data/popular.json'), 200));
       // act
       final result = await dataSource.getPopularMovies();
@@ -62,7 +70,9 @@ void main() {
 
     test('should throw a ServerException when the response code is 404 or other', () async {
       // arrange
-      when(mockHttpClient.get(Uri.parse('$BASE_URL/movie/popular?$API_KEY')))
+      mockHttpClient.badCertificateCallback = (X509Certificate cert, String host, int port) => false;
+      IOClient client = IOClient(mockHttpClient);
+      when(client.get(Uri.parse('$BASE_URL/movie/popular?$API_KEY')))
           .thenAnswer((_) async => http.Response('Not Found', 404));
       // act
       final call = dataSource.getPopularMovies();
@@ -76,7 +86,9 @@ void main() {
 
     test('should return list of movies when response code is 200 ', () async {
       // arrange
-      when(mockHttpClient.get(Uri.parse('$BASE_URL/movie/top_rated?$API_KEY')))
+      mockHttpClient.badCertificateCallback = (X509Certificate cert, String host, int port) => false;
+      IOClient client = IOClient(mockHttpClient);
+      when(client.get(Uri.parse('$BASE_URL/movie/top_rated?$API_KEY')))
           .thenAnswer((_) async => http.Response(readJson('dummy_data/top_rated.json'), 200));
       // act
       final result = await dataSource.getTopRatedMovies();
@@ -86,7 +98,9 @@ void main() {
 
     test('should throw ServerException when response code is other than 200', () async {
       // arrange
-      when(mockHttpClient.get(Uri.parse('$BASE_URL/movie/top_rated?$API_KEY')))
+      mockHttpClient.badCertificateCallback = (X509Certificate cert, String host, int port) => false;
+      IOClient client = IOClient(mockHttpClient);
+      when(client.get(Uri.parse('$BASE_URL/movie/top_rated?$API_KEY')))
           .thenAnswer((_) async => http.Response('Not Found', 404));
       // act
       final call = dataSource.getTopRatedMovies();
@@ -101,7 +115,9 @@ void main() {
 
     test('should return movie detail when the response code is 200', () async {
       // arrange
-      when(mockHttpClient.get(Uri.parse('$BASE_URL/movie/$tId?$API_KEY')))
+      mockHttpClient.badCertificateCallback = (X509Certificate cert, String host, int port) => false;
+      IOClient client = IOClient(mockHttpClient);
+      when(client.get(Uri.parse('$BASE_URL/movie/$tId?$API_KEY')))
           .thenAnswer((_) async => http.Response(readJson('dummy_data/movie_detail.json'), 200));
       // act
       final result = await dataSource.getMovieDetail(tId);
@@ -111,7 +127,9 @@ void main() {
 
     test('should throw Server Exception when the response code is 404 or other', () async {
       // arrange
-      when(mockHttpClient.get(Uri.parse('$BASE_URL/movie/$tId?$API_KEY')))
+      mockHttpClient.badCertificateCallback = (X509Certificate cert, String host, int port) => false;
+      IOClient client = IOClient(mockHttpClient);
+      when(client.get(Uri.parse('$BASE_URL/movie/$tId?$API_KEY')))
           .thenAnswer((_) async => http.Response('Not Found', 404));
       // act
       final call = dataSource.getMovieDetail(tId);
@@ -126,7 +144,9 @@ void main() {
 
     test('should return list of Movie Model when the response code is 200', () async {
       // arrange
-      when(mockHttpClient.get(Uri.parse('$BASE_URL/movie/$tId/recommendations?$API_KEY')))
+      mockHttpClient.badCertificateCallback = (X509Certificate cert, String host, int port) => false;
+      IOClient client = IOClient(mockHttpClient);
+      when(client.get(Uri.parse('$BASE_URL/movie/$tId/recommendations?$API_KEY')))
           .thenAnswer((_) async => http.Response(readJson('dummy_data/movie_recommendations.json'), 200));
       // act
       final result = await dataSource.getMovieRecommendations(tId);
@@ -136,7 +156,9 @@ void main() {
 
     test('should throw Server Exception when the response code is 404 or other', () async {
       // arrange
-      when(mockHttpClient.get(Uri.parse('$BASE_URL/movie/$tId/recommendations?$API_KEY')))
+      mockHttpClient.badCertificateCallback = (X509Certificate cert, String host, int port) => false;
+      IOClient client = IOClient(mockHttpClient);
+      when(client.get(Uri.parse('$BASE_URL/movie/$tId/recommendations?$API_KEY')))
           .thenAnswer((_) async => http.Response('Not Found', 404));
       // act
       final call = dataSource.getMovieRecommendations(tId);
@@ -152,7 +174,9 @@ void main() {
 
     test('should return list of movies when response code is 200', () async {
       // arrange
-      when(mockHttpClient.get(Uri.parse('$BASE_URL/search/movie?$API_KEY&query=$tQuery')))
+      mockHttpClient.badCertificateCallback = (X509Certificate cert, String host, int port) => false;
+      IOClient client = IOClient(mockHttpClient);
+      when(client.get(Uri.parse('$BASE_URL/search/movie?$API_KEY&query=$tQuery')))
           .thenAnswer((_) async => http.Response(readJson('dummy_data/search_spiderman_movie.json'), 200));
       // act
       final result = await dataSource.searchMovies(tQuery);
@@ -162,7 +186,9 @@ void main() {
 
     test('should throw ServerException when response code is other than 200', () async {
       // arrange
-      when(mockHttpClient.get(Uri.parse('$BASE_URL/search/movie?$API_KEY&query=$tQuery')))
+      mockHttpClient.badCertificateCallback = (X509Certificate cert, String host, int port) => false;
+      IOClient client = IOClient(mockHttpClient);
+      when(client.get(Uri.parse('$BASE_URL/search/movie?$API_KEY&query=$tQuery')))
           .thenAnswer((_) async => http.Response('Not Found', 404));
       // act
       final call = dataSource.searchMovies(tQuery);
