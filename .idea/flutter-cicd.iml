@@ -48,6 +48,9 @@
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_crashlytics/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_crashlytics/example/build" />
       <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/firebase_crashlytics/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/m_watchlist/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/m_watchlist/build" />
+      <excludeFolder url="file://$MODULE_DIR$/m_watchlist/.dart_tool" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

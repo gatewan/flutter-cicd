@@ -8,6 +8,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.8.1"
+  bloc:
+    dependency: transitive
+    description:
+      name: bloc
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "8.0.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -146,6 +153,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_bloc:
+    dependency: transitive
+    description:
+      name: flutter_bloc
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "8.0.0"
   flutter_blurhash:
     dependency: transitive
     description:
@@ -226,6 +240,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+  m_movie:
+    dependency: "direct main"
+    description:
+      path: "../m_movie"
+      relative: true
+    source: path
+    version: "0.0.1"
+  m_tv:
+    dependency: "direct main"
+    description:
+      path: "../m_tv"
+      relative: true
+    source: path
+    version: "0.0.1"
+  m_watchlist:
+    dependency: "direct main"
+    description:
+      path: "../m_watchlist"
+      relative: true
+    source: path
+    version: "0.0.1"
   matcher:
     dependency: transitive
     description:
@@ -339,12 +374,12 @@ packages:
     source: hosted
     version: "4.2.4"
   provider:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.0.0"
+    version: "6.0.1"
   rxdart:
     dependency: transitive
     description:

@@ -1,7 +1,8 @@
 library m_tv;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'presentation/bloc/tv_detail_bloc.dart';
+export 'presentation/bloc/tv_now_playing_bloc.dart';
+export 'presentation/bloc/tv_popular_bloc.dart';
+export 'presentation/bloc/tv_recommendation_bloc.dart';
+export 'presentation/bloc/tv_search_bloc.dart';
+export 'presentation/bloc/tv_top_rated_bloc.dart';

@@ -1,7 +1,8 @@
 library m_movie;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'presentation/bloc/movie_detail_bloc.dart';
+export 'presentation/bloc/movie_now_playing_bloc.dart';
+export 'presentation/bloc/movie_popular_bloc.dart';
+export 'presentation/bloc/movie_recommendation_bloc.dart';
+export 'presentation/bloc/movie_search_bloc.dart';
+export 'presentation/bloc/movie_top_rated_bloc.dart';

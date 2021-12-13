@@ -22,8 +22,13 @@ class TvLocalDataSourceImpl implements TvLocalDataSource {
   @override
   Future<String> insertWatchlist(TvTable tv) async {
     try {
-      var tvTable =
-          MovieTable(id: tv.id, title: tv.name, posterPath: tv.posterPath, overview: tv.overview, isMovie: tv.isMovie);
+      var tvTable = MovieTable(
+        id: tv.id,
+        title: tv.name,
+        posterPath: tv.posterPath,
+        overview: tv.overview,
+        isMovie: tv.isMovie,
+      );
       await databaseHelper.insertWatchlist(tvTable);
       return 'Added to Watchlist';
     } catch (e) {
@@ -34,8 +39,13 @@ class TvLocalDataSourceImpl implements TvLocalDataSource {
   @override
   Future<String> removeWatchlist(TvTable tv) async {
     try {
-      var tvTable =
-          MovieTable(id: tv.id, title: tv.name, posterPath: tv.posterPath, overview: tv.overview, isMovie: tv.isMovie);
+      var tvTable = MovieTable(
+        id: tv.id,
+        title: tv.name,
+        posterPath: tv.posterPath,
+        overview: tv.overview,
+        isMovie: tv.isMovie,
+      );
       await databaseHelper.removeWatchlist(tvTable);
       return 'Removed from Watchlist';
     } catch (e) {

@@ -1,3 +1,5 @@
+const routeHomeMovie = '/home-movie';
+const routeHomeTv = '/home-tv';
 const routePopularMovie = '/popular-movie';
 const routePopularTv = '/popular-tv';
 const routeTopRateMovie = '/top-rated-movie';
@@ -7,5 +9,4 @@ const routeDetailTv = '/detail-tv';
 const routeSearchMovie = '/search-movie';
 const routeSearchTv = '/search-tv';
 const routeAbout = '/about';
-const routeWatchListMovie = '/watch-list-movie';
-const routeWatchListTv = '/watch-list-tv';
+const routeWatchList = '/watch-list';

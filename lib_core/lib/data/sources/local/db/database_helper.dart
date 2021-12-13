@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:lib_core/data/models/movie_table.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -74,6 +75,7 @@ class DatabaseHelper {
     final db = await database;
     final List<Map<String, dynamic>> results = await db!.query(_tblWatchlist);
 
+    debugPrint("wtf db $results");
     return results;
   }
 }

@@ -15,6 +15,7 @@ class Tv extends Equatable {
     required this.posterPath,
     required this.voteAverage,
     required this.voteCount,
+    required this.isMovie,
   });
 
   Tv.watchlist({
@@ -22,6 +23,7 @@ class Tv extends Equatable {
     required this.overview,
     required this.posterPath,
     required this.name,
+    required this.isMovie,
   });
 
   String? backdropPath;
@@ -37,6 +39,7 @@ class Tv extends Equatable {
   String? posterPath;
   double? voteAverage;
   int? voteCount;
+  bool isMovie;
 
   @override
   List<Object?> get props => [

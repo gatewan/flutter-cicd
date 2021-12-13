@@ -9,7 +9,7 @@ class TvTable extends Equatable {
   final String? overview;
   final bool isMovie;
 
-  TvTable({
+  const TvTable({
     required this.id,
     required this.name,
     required this.posterPath,
@@ -22,33 +22,25 @@ class TvTable extends Equatable {
         name: tv.name,
         posterPath: tv.posterPath,
         overview: tv.overview,
-        isMovie: tv.isMovie,
+        isMovie: false,
       );
 
   factory TvTable.fromMap(Map<String, dynamic> map) => TvTable(
         id: map['id'],
-        name: map['name'],
+        name: map['title'],
         posterPath: map['posterPath'],
         overview: map['overview'],
-        isMovie: map['is_movie'] ?? true,
+        isMovie: map['is_movie'] == 1 ? true : false,
       );
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'name': name,
-        'posterPath': posterPath,
-        'overview': overview,
-        'is_movie': 0,
-      };
 
   Tv toEntity() => Tv.watchlist(
         id: id,
         overview: overview,
         posterPath: posterPath,
         name: name,
+        isMovie: isMovie,
       );
 
   @override
-  // TODO: implement props
   List<Object?> get props => [id, name, posterPath, overview];
 }
