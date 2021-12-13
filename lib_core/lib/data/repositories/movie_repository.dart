@@ -12,7 +12,7 @@ import 'package:m_movie/domain/interfaces/movie_interface.dart';
 class MovieRepositoryImpl implements MovieInterface {
   final MovieRemoteDataSource remoteDataSource;
 
-  MovieRepositoryImpl({required this.remoteDataSource});
+  MovieRepositoryImpl({required this.remoteDataSource, localDataSource});
 
   @override
   Future<Either<Failure, List<Movie>>> getNowPlayingMovies() async {
