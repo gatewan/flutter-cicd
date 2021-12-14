@@ -4,8 +4,8 @@ import 'package:lib_core/data/sources/local/movie_local_data_source.dart';
 import 'package:lib_core/lib_core.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../dummy_data/dummy_movie_objects.dart';
-import '../../helpers/test_helper.mocks.dart';
+import '../../xtra_dummy/dummy_movie_objects.dart';
+import '../../xtra_helpers/test_helper.mocks.dart';
 
 void main() {
   late MovieLocalDataSourceImpl dataSource;

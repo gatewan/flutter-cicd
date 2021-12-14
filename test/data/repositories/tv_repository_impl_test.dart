@@ -9,8 +9,8 @@ import 'package:lib_core/domain/entities/tv.dart';
 import 'package:lib_core/lib_core.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../dummy_data/dummy_tv_objects.dart';
-import '../../helpers/test_helper.mocks.dart';
+import '../../xtra_dummy/dummy_tv_objects.dart';
+import '../../xtra_helpers/test_helper.mocks.dart';
 
 void main() {
   late TvRepositoryImpl repository;

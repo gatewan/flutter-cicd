@@ -1,9 +1,8 @@
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lib_core/data/models/tv_detail_model.dart';
 import 'package:lib_core/domain/entities/tv_detail.dart';
 
-import '../../dummy_data/dummy_tv_objects.dart';
+import '../../xtra_dummy/dummy_tv_objects.dart';
 
 void main() {
   final tTvDetailModel = TvDetailModel(

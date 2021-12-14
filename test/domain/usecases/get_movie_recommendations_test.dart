@@ -4,7 +4,7 @@ import 'package:lib_core/domain/entities/movie.dart';
 import 'package:m_movie/domain/useCases/get_movie_recommendations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../helpers/test_helper.mocks.dart';
+import '../../xtra_helpers/test_helper.mocks.dart';
 
 void main() {
   late GetMovieRecommendations useCase;

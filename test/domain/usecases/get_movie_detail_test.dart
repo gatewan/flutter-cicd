@@ -3,8 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:m_movie/domain/usecases/get_movie_detail.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../dummy_data/dummy_movie_objects.dart';
-import '../../helpers/test_helper.mocks.dart';
+import '../../xtra_dummy/dummy_movie_objects.dart';
+import '../../xtra_helpers/test_helper.mocks.dart';
 
 void main() {
   late GetMovieDetail useCase;
