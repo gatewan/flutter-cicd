@@ -14,6 +14,7 @@ class MovieCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4),
       child: InkWell(
+        key: Key("${movie.title}"),
         onTap: () {
           Navigator.pushNamed(
             context,

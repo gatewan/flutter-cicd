@@ -16,7 +16,7 @@ class MovieHomePage extends StatefulWidget {
 }
 
 class _HomeMoviePageState extends State<MovieHomePage> {
-  bool _isMovie = true;
+  final bool _isMovie = true;
 
   @override
   void initState() {
