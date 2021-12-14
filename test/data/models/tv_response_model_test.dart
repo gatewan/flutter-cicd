@@ -28,7 +28,7 @@ void main() {
   group('fromJson', () {
     test('should return a valid model from JSON', () async {
       // arrange
-      final Map<String, dynamic> jsonMap = json.decode(readJson('dummy_data/on_the_air.json'));
+      final Map<String, dynamic> jsonMap = json.decode(readJson('xtra_dummy/on_the_air.json'));
       // act
       final result = TvResponse.fromJson(jsonMap);
       // assert
