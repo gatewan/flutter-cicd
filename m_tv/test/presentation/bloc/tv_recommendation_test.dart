@@ -28,11 +28,11 @@ void main() {
     blocTest<TvRecommendationBloc, TvRecommendationState>(
       'should emit [Loading, Error] when get Recommendation Tv failed',
       build: () {
-        when(mockGetTvRecommendation.execute(1)).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(mockGetTvRecommendation.execute(1)).thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
         return tvRecommendationBloc;
       },
-      act: (bloc) => bloc.add(OnTvRecommendation(id: 1)),
-      expect: () => [StateLoadingRecommendation(), StateErrorRecommendation(message: 'Server Failure')],
+      act: (bloc) => bloc.add(const OnTvRecommendation(id: 1)),
+      expect: () => [StateLoadingRecommendation(), const StateErrorRecommendation(message: 'Server Failure')],
       verify: (bloc) {
         verify(mockGetTvRecommendation.execute(1));
       },
@@ -44,7 +44,7 @@ void main() {
         when(mockGetTvRecommendation.execute(1)).thenAnswer((_) async => Right([testTv]));
         return tvRecommendationBloc;
       },
-      act: (bloc) => bloc.add(OnTvRecommendation(id: 1)),
+      act: (bloc) => bloc.add(const OnTvRecommendation(id: 1)),
       expect: () => [
         StateLoadingRecommendation(),
         StateTvRecommendation(tvs: [testTv])

@@ -28,11 +28,11 @@ void main() {
     blocTest<TvPopularBloc, TvPopularState>(
       'should emit [Loading, Error] when get popular tv failed',
       build: () {
-        when(mockGetTvPopular.execute()).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(mockGetTvPopular.execute()).thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
         return moviePopularBloc;
       },
-      act: (bloc) => bloc.add(OnTvPopular()),
-      expect: () => [StateLoadingPopular(), StateErrorPopular(message: 'Server Failure')],
+      act: (bloc) => bloc.add(const OnTvPopular()),
+      expect: () => [StateLoadingPopular(), const StateErrorPopular(message: 'Server Failure')],
       verify: (bloc) {
         verify(mockGetTvPopular.execute());
       },
@@ -44,7 +44,7 @@ void main() {
         when(mockGetTvPopular.execute()).thenAnswer((_) async => Right([testTv]));
         return moviePopularBloc;
       },
-      act: (bloc) => bloc.add(OnTvPopular()),
+      act: (bloc) => bloc.add(const OnTvPopular()),
       expect: () => [
         StateLoadingPopular(),
         StateTvPopular(tvs: [testTv])

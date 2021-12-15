@@ -15,7 +15,7 @@ void main() {
     useCase = GetMovieDetail(mockMovieInterface);
   });
 
-  final tId = 1;
+  const tId = 1;
 
   test('should get movie detail from the repository', () async {
     // arrange

@@ -28,11 +28,11 @@ void main() {
     blocTest<TvNowPlayingBloc, TvNowPlayingState>(
       'should emit [Loading, Error] when get now playing tv failed',
       build: () {
-        when(mockGetTvNowPlaying.execute()).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(mockGetTvNowPlaying.execute()).thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
         return movieNowPlayingBloc;
       },
-      act: (bloc) => bloc.add(OnTvNowPlaying()),
-      expect: () => [StateLoadingNowPlaying(), StateErrorNowPlaying(message: 'Server Failure')],
+      act: (bloc) => bloc.add(const OnTvNowPlaying()),
+      expect: () => [StateLoadingNowPlaying(), const StateErrorNowPlaying(message: 'Server Failure')],
       verify: (bloc) {
         verify(mockGetTvNowPlaying.execute());
       },
@@ -44,7 +44,7 @@ void main() {
         when(mockGetTvNowPlaying.execute()).thenAnswer((_) async => Right([testTv]));
         return movieNowPlayingBloc;
       },
-      act: (bloc) => bloc.add(OnTvNowPlaying()),
+      act: (bloc) => bloc.add(const OnTvNowPlaying()),
       expect: () => [
         StateLoadingNowPlaying(),
         StateTvNowPlaying(tvs: [testTv])

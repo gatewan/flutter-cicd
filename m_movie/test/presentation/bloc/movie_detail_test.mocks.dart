@@ -42,6 +42,4 @@ class MockGetMovieDetail extends _i1.Mock implements _i4.GetMovieDetail {
           returnValue: Future<_i3.Either<_i6.Failure, _i7.MovieDetail>>.value(
               _FakeEither_1<_i6.Failure, _i7.MovieDetail>())) as _i5
           .Future<_i3.Either<_i6.Failure, _i7.MovieDetail>>);
-  @override
-  String toString() => super.toString();
 }

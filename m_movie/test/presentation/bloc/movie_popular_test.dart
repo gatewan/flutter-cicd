@@ -28,11 +28,11 @@ void main() {
     blocTest<MoviePopularBloc, MoviePopularState>(
       'should emit [Loading, Error] when get popular movie failed',
       build: () {
-        when(mockGetMoviePopular.execute()).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(mockGetMoviePopular.execute()).thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
         return moviePopularBloc;
       },
-      act: (bloc) => bloc.add(OnMoviePopular()),
-      expect: () => [StateLoadingPopular(), StateErrorPopular(message: 'Server Failure')],
+      act: (bloc) => bloc.add(const OnMoviePopular()),
+      expect: () => [StateLoadingPopular(), const StateErrorPopular(message: 'Server Failure')],
       verify: (bloc) {
         verify(mockGetMoviePopular.execute());
       },
@@ -44,7 +44,7 @@ void main() {
         when(mockGetMoviePopular.execute()).thenAnswer((_) async => Right([testMovie]));
         return moviePopularBloc;
       },
-      act: (bloc) => bloc.add(OnMoviePopular()),
+      act: (bloc) => bloc.add(const OnMoviePopular()),
       expect: () => [
         StateLoadingPopular(),
         StateMoviePopular(movies: [testMovie])

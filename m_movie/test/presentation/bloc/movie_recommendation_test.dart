@@ -28,11 +28,12 @@ void main() {
     blocTest<MovieRecommendationBloc, MovieRecommendationState>(
       'should emit [Loading, Error] when get Recommendation movie failed',
       build: () {
-        when(mockGetMovieRecommendation.execute(1)).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(mockGetMovieRecommendation.execute(1))
+            .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
         return movieRecommendationBloc;
       },
-      act: (bloc) => bloc.add(OnMovieRecommendation(id: 1)),
-      expect: () => [StateLoadingRecommendation(), StateErrorRecommendation(message: 'Server Failure')],
+      act: (bloc) => bloc.add(const OnMovieRecommendation(id: 1)),
+      expect: () => [StateLoadingRecommendation(), const StateErrorRecommendation(message: 'Server Failure')],
       verify: (bloc) {
         verify(mockGetMovieRecommendation.execute(1));
       },
@@ -44,7 +45,7 @@ void main() {
         when(mockGetMovieRecommendation.execute(1)).thenAnswer((_) async => Right([testMovie]));
         return movieRecommendationBloc;
       },
-      act: (bloc) => bloc.add(OnMovieRecommendation(id: 1)),
+      act: (bloc) => bloc.add(const OnMovieRecommendation(id: 1)),
       expect: () => [
         StateLoadingRecommendation(),
         StateMovieRecommendation(movies: [testMovie])

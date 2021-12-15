@@ -28,11 +28,11 @@ void main() {
     blocTest<TvTopRatedBloc, TvTopRatedState>(
       'should emit [Loading, Error] when get Top Rated Tv failed',
       build: () {
-        when(mockGetTvTopRated.execute()).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(mockGetTvTopRated.execute()).thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
         return movieTopRatedBloc;
       },
-      act: (bloc) => bloc.add(OnTvTopRated()),
-      expect: () => [StateLoadingTopRated(), StateErrorTopRated(message: 'Server Failure')],
+      act: (bloc) => bloc.add(const OnTvTopRated()),
+      expect: () => [StateLoadingTopRated(), const StateErrorTopRated(message: 'Server Failure')],
       verify: (bloc) {
         verify(mockGetTvTopRated.execute());
       },
@@ -44,7 +44,7 @@ void main() {
         when(mockGetTvTopRated.execute()).thenAnswer((_) async => Right([testTv]));
         return movieTopRatedBloc;
       },
-      act: (bloc) => bloc.add(OnTvTopRated()),
+      act: (bloc) => bloc.add(const OnTvTopRated()),
       expect: () => [
         StateLoadingTopRated(),
         StateTvTopRated(tvs: [testTv])

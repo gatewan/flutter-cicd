@@ -15,7 +15,7 @@ void main() {
     useCase = GetMovieRecommendations(mockMovieInterface);
   });
 
-  final tId = 1;
+  const tId = 1;
   final tMovies = <Movie>[];
 
   test('should get list of movie recommendations from the repository', () async {

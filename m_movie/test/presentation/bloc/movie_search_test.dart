@@ -28,11 +28,12 @@ void main() {
     blocTest<MovieSearchBloc, MovieSearchState>(
       'should emit [Loading, Error] when get Search movie failed',
       build: () {
-        when(mockSearchMovies.execute("Spider-Man")).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(mockSearchMovies.execute("Spider-Man"))
+            .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
         return movieSearchBloc;
       },
-      act: (bloc) => bloc.add(OnQueryChanged(query: "Spider-Man")),
-      expect: () => [StateLoadingSearch(), StateErrorSearch(message: 'Server Failure')],
+      act: (bloc) => bloc.add(const OnQueryChanged(query: "Spider-Man")),
+      expect: () => [StateLoadingSearch(), const StateErrorSearch(message: 'Server Failure')],
       verify: (bloc) {
         verify(mockSearchMovies.execute("Spider-Man"));
       },
@@ -44,7 +45,7 @@ void main() {
         when(mockSearchMovies.execute("Spider-Man")).thenAnswer((_) async => Right([testMovie]));
         return movieSearchBloc;
       },
-      act: (bloc) => bloc.add(OnQueryChanged(query: "Spider-Man")),
+      act: (bloc) => bloc.add(const OnQueryChanged(query: "Spider-Man")),
       expect: () => [
         StateLoadingSearch(),
         StateHasData(result: [testMovie])

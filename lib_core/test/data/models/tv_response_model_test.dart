@@ -10,10 +10,10 @@ void main() {
   final tTvModel = TvModel(
     backdropPath: "/otw.jpg",
     firstAirDate: "01-01-2011",
-    genreIds: [1, 2, 3],
+    genreIds: const [1, 2, 3],
     id: 1,
     name: "dummy",
-    originCountry: ["Jogja", "Yogyakarta"],
+    originCountry: const ["Jogja", "Yogyakarta"],
     originalLanguage: "en",
     originalName: "dummy name",
     overview: "lorem insum gipsum",

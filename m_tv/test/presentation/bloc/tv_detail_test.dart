@@ -28,11 +28,11 @@ void main() {
     blocTest<TvDetailBloc, TvDetailState>(
       'should emit [Loading, Error] when get detail movie failed',
       build: () {
-        when(mockGetTvDetail.execute(1)).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(mockGetTvDetail.execute(1)).thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
         return movieDetailBloc;
       },
-      act: (bloc) => bloc.add(OnTvDetail(id: 1)),
-      expect: () => [StateLoadingDetail(), StateErrorDetail(message: 'Server Failure')],
+      act: (bloc) => bloc.add(const OnTvDetail(id: 1)),
+      expect: () => [StateLoadingDetail(), const StateErrorDetail(message: 'Server Failure')],
       verify: (bloc) {
         verify(mockGetTvDetail.execute(1));
       },
