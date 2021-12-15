@@ -8,6 +8,9 @@ Praktik terbaik mengintegrasikan kode ke dalam repository, sehingga setiap kali 
 
 ### Contoh Firebase Analytics & Crashlytics
 
+Analytic
+![Contoh Crash Android](/assets/crash-android.png)
+
 Android
 ![Contoh Crash Android](/assets/crash-android.png)
 

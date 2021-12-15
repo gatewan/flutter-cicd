@@ -46,11 +46,12 @@ dependencies:
   firebase_crashlytics: ^2.4.0
 
 dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
   mockito: ^5.0.8
   build_runner: ^2.0.4
   analyzer: ^2.6.0
-  flutter_test:
-    sdk: flutter
   flutter_driver:
     sdk: flutter
   test: any

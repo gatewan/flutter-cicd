@@ -30,6 +30,12 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
+  mockito: ^5.0.8
+  build_runner: ^2.0.4
+  analyzer: ^2.6.0
+  flutter_driver:
+    sdk: flutter
+  test: any
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -37,10 +43,10 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
 
-# To add assets to your package, add an assets section, like this:
-# assets:
-#   - images/a_dot_burr.jpeg
-#   - images/a_dot_ham.jpeg
+  # To add assets to your package, add an assets section, like this:
+  # assets:
+  #   - images/a_dot_burr.jpeg
+  #   - images/a_dot_ham.jpeg
   assets:
     - assets/certificates/certificates.pem
 

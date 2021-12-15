@@ -44,7 +44,7 @@ void main() {
         when(mockGetTvDetail.execute(1)).thenAnswer((_) async => Right(testTvDetail));
         return movieDetailBloc;
       },
-      act: (bloc) => bloc.add(OnTvDetail(id: 1)),
+      act: (bloc) => bloc.add(const OnTvDetail(id: 1)),
       expect: () => [StateLoadingDetail(), StateTvDetail(tvDetail: testTvDetail)],
       verify: (bloc) {
         verify(mockGetTvDetail.execute(1));

@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:http/http.dart' as http;
 import 'package:lib_core/data/sources/local/db/database_helper.dart';
 import 'package:lib_core/data/sources/local/movie_local_data_source.dart';
 import 'package:lib_core/data/sources/local/tv_local_data_source.dart';
@@ -18,6 +17,6 @@ import 'package:mockito/annotations.dart';
   TvLocalDataSource,
   DatabaseHelper,
 ], customMocks: [
-  MockSpec<HttpClient>(as: #MockHttpClient, returnNullOnMissingStub: true)
+  MockSpec<http.Client>(as: #MockHttpClient, returnNullOnMissingStub: true)
 ])
 void main() {}
