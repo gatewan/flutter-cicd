@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:lib_core/domain/entities/tv.dart';
+import 'package:lib_core/lib_core.dart';
 
 class TvModel extends Equatable {
   TvModel({
@@ -35,7 +36,7 @@ class TvModel extends Equatable {
   final bool isMovie;
 
   factory TvModel.fromJson(Map<String, dynamic> json) => TvModel(
-        backdropPath: json["backdrop_path"] ?? "n/a",
+        backdropPath: json["backdrop_path"] ?? IMG_NOT_FOUND,
         firstAirDate: json["first_air_date"] ?? "n/a",
         genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
         id: json["id"],

@@ -174,7 +174,7 @@ class DetailContent extends StatelessWidget {
                               child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
-                                  final movie = tv.seasons[index];
+                                  final item = tv.seasons[index];
                                   return Padding(
                                     padding: const EdgeInsets.all(4.0),
                                     child: InkWell(
@@ -182,7 +182,7 @@ class DetailContent extends StatelessWidget {
                                         Navigator.pushReplacementNamed(
                                           context,
                                           routeDetailTv,
-                                          arguments: movie.id,
+                                          arguments: [item.id],
                                         );
                                       },
                                       child: Column(
@@ -193,7 +193,7 @@ class DetailContent extends StatelessWidget {
                                               Radius.circular(8),
                                             ),
                                             child: CachedNetworkImage(
-                                              imageUrl: 'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                                              imageUrl: 'https://image.tmdb.org/t/p/w500${item.posterPath}',
                                               placeholder: (context, url) => const Center(
                                                 child: CircularProgressIndicator(),
                                               ),
@@ -203,7 +203,7 @@ class DetailContent extends StatelessWidget {
                                           Padding(
                                             padding: const EdgeInsets.only(top: 8),
                                             child: Text(
-                                              formattedDate(movie.airDate),
+                                              formattedDate(item.airDate),
                                               style: const TextStyle(fontSize: 10),
                                             ),
                                           ),
@@ -241,7 +241,7 @@ class DetailContent extends StatelessWidget {
                                             Navigator.pushReplacementNamed(
                                               context,
                                               routeDetailTv,
-                                              arguments: tv.id,
+                                              arguments: [tv.id],
                                             );
                                           },
                                           child: ClipRRect(

@@ -191,7 +191,7 @@ class DetailContent extends StatelessWidget {
                                             Navigator.pushReplacementNamed(
                                               context,
                                               routeDetailMovie,
-                                              arguments: movie.id,
+                                              arguments: [movie.id],
                                             );
                                           },
                                           child: ClipRRect(

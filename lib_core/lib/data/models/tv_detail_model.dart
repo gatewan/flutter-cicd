@@ -7,6 +7,7 @@ import 'package:lib_core/data/models/production_country_model.dart';
 import 'package:lib_core/data/models/session_model.dart';
 import 'package:lib_core/data/models/spoken_language_model.dart';
 import 'package:lib_core/domain/entities/tv_detail.dart';
+import 'package:lib_core/lib_core.dart';
 
 class TvDetailModel extends Equatable {
   TvDetailModel({
@@ -74,7 +75,7 @@ class TvDetailModel extends Equatable {
   int voteCount;
 
   factory TvDetailModel.fromJson(Map<String, dynamic> json) => TvDetailModel(
-        backdropPath: json["backdrop_path"] ?? "n/a",
+        backdropPath: json["backdrop_path"] ?? IMG_NOT_FOUND,
         createdBy: List<CreatedByModel>.from(json["created_by"].map((x) => CreatedByModel.fromJson(x))),
         episodeRunTime: List<int>.from(json["episode_run_time"].map((x) => x)),
         firstAirDate: DateTime.parse(json["first_air_date"]),
@@ -94,7 +95,7 @@ class TvDetailModel extends Equatable {
         originalName: json["original_name"],
         overview: json["overview"],
         popularity: json["popularity"].toDouble(),
-        posterPath: json["poster_path"],
+        posterPath: json["poster_path"] ?? IMG_NOT_FOUND,
         productionCompanies: List<NetworkModel>.from(json["production_companies"].map((x) => NetworkModel.fromJson(x))),
         productionCountries: List<ProductionCountryModel>.from(
             json["production_countries"].map((x) => ProductionCountryModel.fromJson(x))),

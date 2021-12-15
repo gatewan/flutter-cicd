@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:lib_core/domain/entities/createdby.dart';
+import 'package:lib_core/lib_core.dart';
 
 class CreatedByModel extends Equatable {
   CreatedByModel({
@@ -21,7 +22,7 @@ class CreatedByModel extends Equatable {
         creditId: json["credit_id"],
         name: json["name"],
         gender: json["gender"],
-        profilePath: json["profile_path"] ?? "n/a",
+        profilePath: json["profile_path"] ?? IMG_NOT_FOUND,
       );
 
   CreatedBy toEntity() => CreatedBy(

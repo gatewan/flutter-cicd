@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:lib_core/domain/entities/session.dart';
+import 'package:lib_core/lib_core.dart';
 
 class SeasonModel extends Equatable {
   SeasonModel({
@@ -26,7 +27,7 @@ class SeasonModel extends Equatable {
         id: json["id"],
         name: json["name"],
         overview: json["overview"],
-        posterPath: json["poster_path"] ?? "n/a",
+        posterPath: json["poster_path"] ?? IMG_NOT_FOUND,
         seasonNumber: json["season_number"],
       );
 

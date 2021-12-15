@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:lib_core/domain/entities/network.dart';
+import 'package:lib_core/lib_core.dart';
 
 class NetworkModel extends Equatable {
   NetworkModel({
@@ -17,7 +18,7 @@ class NetworkModel extends Equatable {
   factory NetworkModel.fromJson(Map<String, dynamic> json) => NetworkModel(
         name: json["name"],
         id: json["id"],
-        logoPath: json["logo_path"] == null ? "n/a" : json["logo_path"],
+        logoPath: json["logo_path"] ?? IMG_NOT_FOUND,
         originCountry: json["origin_country"],
       );
 

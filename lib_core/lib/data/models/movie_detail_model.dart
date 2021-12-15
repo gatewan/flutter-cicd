@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:lib_core/data/models/genre_model.dart';
 import 'package:lib_core/domain/entities/movie_detail.dart';
+import 'package:lib_core/lib_core.dart';
 
 class MovieDetailResponse extends Equatable {
   MovieDetailResponse({
@@ -61,7 +62,7 @@ class MovieDetailResponse extends Equatable {
         originalTitle: json["original_title"],
         overview: json["overview"],
         popularity: json["popularity"].toDouble(),
-        posterPath: json["poster_path"] ?? "n/a",
+        posterPath: json["poster_path"] ?? IMG_NOT_FOUND,
         releaseDate: json["release_date"],
         revenue: json["revenue"],
         runtime: json["runtime"],
