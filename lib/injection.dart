@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:get_it/get_it.dart';
 import 'package:lib_core/data/repositories/movie_repository.dart';
 import 'package:lib_core/data/repositories/tv_repository.dart';
@@ -9,6 +7,7 @@ import 'package:lib_core/data/sources/local/movie_local_data_source.dart';
 import 'package:lib_core/data/sources/local/tv_local_data_source.dart';
 import 'package:lib_core/data/sources/remote/movie_remote_data_source.dart';
 import 'package:lib_core/data/sources/remote/tv_remote_data_source.dart';
+import 'package:lib_core/utils/ssl_pinning.dart';
 import 'package:m_movie/domain/interfaces/movie_interface.dart';
 import 'package:m_movie/domain/usecases/get_movie_detail.dart';
 import 'package:m_movie/domain/usecases/get_movie_now_playing.dart';
@@ -116,15 +115,15 @@ void init() {
   );
 
   // data sources
-  locator.registerLazySingleton<MovieRemoteDataSource>(() => MovieRemoteDataSourceImpl(sslClient: locator()));
+  locator.registerLazySingleton<MovieRemoteDataSource>(() => MovieRemoteDataSourceImpl(client: locator()));
   locator.registerLazySingleton<MovieLocalDataSource>(() => MovieLocalDataSourceImpl(databaseHelper: locator()));
 
-  locator.registerLazySingleton<TvRemoteDataSource>(() => TvRemoteDataSourceImpl(sslClient: locator()));
+  locator.registerLazySingleton<TvRemoteDataSource>(() => TvRemoteDataSourceImpl(client: locator()));
   locator.registerLazySingleton<TvLocalDataSource>(() => TvLocalDataSourceImpl(databaseHelper: locator()));
 
   // helper
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
 
   // external
-  locator.registerLazySingleton(() => HttpClient());
+  locator.registerLazySingleton(() => HttpSSLPinning.client);
 }

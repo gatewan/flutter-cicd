@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lib_core/lib_core.dart';
 import 'package:lib_core/utils/routes.dart';
+import 'package:lib_core/utils/ssl_pinning.dart';
 import 'package:m_about/m_about.dart';
 import 'package:m_movie/m_movie.dart';
 import 'package:m_movie/presentation/pages/movie_detail_page.dart';
@@ -24,6 +25,7 @@ import 'package:provider/provider.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await HttpSSLPinning.init();
   di.init();
   runApp(MyApp());
 }
