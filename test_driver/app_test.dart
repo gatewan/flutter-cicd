@@ -1,5 +1,3 @@
-
-
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 
@@ -23,7 +21,6 @@ void main() {
       expect(await driver.getText(firstItem), 'Now Playing');
       expect(await driver.getText(secondItem), 'Popular');
       expect(await driver.getText(thirdItem), 'Top Rated');
-
       await driver.tap(find.byValueKey('Popular'));
     });
 
@@ -37,10 +34,7 @@ void main() {
       await driver.scrollUntilVisible(listFinder, firstItem, dyScroll: -300);
       await driver.scrollUntilVisible(listFinder, secondItem, dyScroll: -100);
       await driver.scrollUntilVisible(listFinder, thirdItem, dyScroll: 300);
-
       await driver.tap(find.pageBack());
     });
   });
-
-  
 }
